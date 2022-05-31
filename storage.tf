@@ -7,7 +7,7 @@ resource "random_string" "random" {
 
 # Create Azure Storage account
 resource "azurerm_storage_account" "CorpStorage01" {
-  name                     = "itrastorage-${random_string.random.id}"
+  name                     = "itrastorage${random_string.random.id}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
