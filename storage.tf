@@ -15,8 +15,8 @@ resource "azurerm_storage_account" "CorpStorage01" {
   account_replication_type = "GRS"
 
   network_rules {
-      default_action = "Deny"
-      virtual_network_subnet_ids = [azurerm_subnet.storage_subnet.id]
+    default_action             = "Deny"
+    virtual_network_subnet_ids = [azurerm_subnet.storage_subnet.id]
   }
 
 }

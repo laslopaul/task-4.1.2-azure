@@ -22,9 +22,9 @@ resource "azurerm_network_interface_security_group_association" "nsg_assoc" {
 
 # Create virtual machine
 resource "azurerm_windows_virtual_machine" "winvm" {
-  name                = "WinVM"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  name                  = "WinVM"
+  location              = azurerm_resource_group.rg.location
+  resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.nic_winvm.id]
   size                  = "Standard_B1s"
   admin_username        = "admin"
