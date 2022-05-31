@@ -24,7 +24,7 @@ resource "azurerm_storage_account" "CorpStorage01" {
 # Create a share for drive mapping in Windows VM
 resource "azurerm_storage_share" "BackupShare" {
   name                 = "backup"
-  quota                = 1024
+  quota                = 5
   storage_account_name = azurerm_storage_account.CorpStorage01.name
   depends_on           = [azurerm_storage_account.CorpStorage01]
 }
