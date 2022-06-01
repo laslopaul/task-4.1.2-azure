@@ -28,3 +28,10 @@ resource "azurerm_storage_share" "BackupShare" {
   storage_account_name = azurerm_storage_account.CorpStorage01.name
   depends_on           = [azurerm_storage_account.CorpStorage01]
 }
+
+# Create a blob container
+resource "azurerm_storage_container" "BlobContainer" {
+  name                  = "BlobContainer"
+  storage_account_name  = azurerm_storage_account.CorpStorage01.name
+  container_access_type = "private"
+}
