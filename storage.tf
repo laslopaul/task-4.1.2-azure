@@ -16,6 +16,7 @@ resource "azurerm_storage_account" "CorpStorage01" {
 
   network_rules {
     default_action             = "Deny"
+    ip_rules                   = ["185.176.222.163"]
     virtual_network_subnet_ids = [azurerm_subnet.storage_subnet.id]
   }
 
