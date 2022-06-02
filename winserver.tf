@@ -27,7 +27,7 @@ resource "azurerm_windows_virtual_machine" "winvm" {
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.nic_winvm.id]
   size                  = "Standard_B1s"
-  admin_username        = "admin"
+  admin_username        = "sysad"
   admin_password        = "itra_task412"
 
   os_disk {
