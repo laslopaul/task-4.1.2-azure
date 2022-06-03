@@ -13,13 +13,6 @@ resource "azurerm_storage_account" "CorpStorage01" {
   account_tier             = "Standard"
   access_tier              = "Cool"
   account_replication_type = "GRS"
-
-  network_rules {
-    default_action             = "Deny"
-    ip_rules                   = ["185.176.222.163"]
-    virtual_network_subnet_ids = [azurerm_subnet.storage_subnet.id]
-  }
-
 }
 
 # Create a share for drive mapping in Windows VM
@@ -35,4 +28,14 @@ resource "azurerm_storage_container" "BlobContainer" {
   name                  = "blobcontainer"
   storage_account_name  = azurerm_storage_account.CorpStorage01.name
   container_access_type = "private"
+}
+
+# Add network security rules for storage account
+resource "azurerm_storage_account_network_rules" "storage_net_rules" {
+  resource_group_name        = azurerm_resource_group.rg.name
+  storage_account_name       = azurerm_storage_account.CorpStorage01.name
+  default_action             = "Deny"
+  bypass                     = ["AzureServices"]
+  ip_rules                   = ["185.176.222.0/24"]
+  virtual_network_subnet_ids = [azurerm_subnet.storage_subnet.id]
 }
