@@ -11,7 +11,9 @@ resource "azurerm_storage_account" "CorpStorage01" {
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
+  # Enable cool access tier to reduce storage access costs
   access_tier              = "Cool"
+  # Enable maximum available redundancy level for this account
   account_replication_type = "GRS"
 }
 
